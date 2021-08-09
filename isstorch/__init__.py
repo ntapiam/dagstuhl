@@ -12,7 +12,7 @@ def compute(x, level=2):
 
     S = [x[1:] - x[0]] 
     for n in range(1, level):
-        temp = torch.zeros((N - 1,) + (d,) * (n+1))
+        temp = torch.zeros((N - 1,) + (d,) * (n+1), device=x.device)
         for j in range(n):
             S_shape = (N - 1,) + (d,) * (j + 1) + (1,) * (n - j)
             X_shape = (N - 1,) + (1,) * (j + 1) + (d,) * (n - j)
