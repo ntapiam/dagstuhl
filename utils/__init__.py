@@ -16,15 +16,5 @@ def generate_examples():
     return (Y.unsqueeze(-1), labels)
 
 
-def compute_signatures(X):
-    sigs = torch.zeros(X.shape[0], 3)
-    for k, sample in enumerate(X):
-        sigs[k] = torch.tensor(
-            [
-                sample[-1] - sample[0],
-                compute(sample)[-1].item(),
-                torch.pow(sample.diff(axis=0), 2).sum(),
-            ]
-        )
-
-    return sigs
+def compute_signatures(X, level=2):
+    return torch.vstack([compute(x, level) for x in X])
