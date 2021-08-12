@@ -26,7 +26,7 @@ def compute(x, level=2):
         for s in S[length - 1]:
             weight = s.dim() - 1
             for x_weight in range(level - weight):
-                out = torch.zeros((N - 1,) + (d,) * (weight + x_weight + 1))
+                out = torch.zeros((N - 1,) + (d,) * (weight + x_weight + 1), device=x.device)
                 torch.cumsum(
                     __gen_outer(s[length - 1 : -1], dX[x_weight][length:]),
                     dim=0,
