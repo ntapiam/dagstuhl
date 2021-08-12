@@ -35,11 +35,5 @@ def compute(x, level=2):
                 temp.append(out)
         S.append(temp)
 
-    print(S)
-    print([[s.shape for s in sub] for sub in S])
     return torch.cat([s[-1].flatten() for sub in S for s in sub])
 
-
-if __name__ == "__main__":
-    x = torch.tensor([[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [2.0, 2.0]])
-    print(compute(x, 4))
